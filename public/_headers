@@ -1,0 +1,15 @@
+# Cachning för Cloudflare Pages.
+#
+# Filnamnen under /assets/ innehåller en hash av innehållet, så de kan cachas
+# hur länge som helst: ändras filen får den ett nytt namn. index.html får
+# däremot aldrig cachas, för den är det enda som pekar ut vilka assets som
+# gäller. Utan den raden fortsätter en besökare köra gammal kod efter en ny
+# version, och en gammal klient som pratar med ett nytt API är svårt att felsöka.
+
+/*
+  Cache-Control: no-cache
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable

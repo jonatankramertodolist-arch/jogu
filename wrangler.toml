@@ -1,0 +1,15 @@
+name = "jogu"
+compatibility_date = "2026-08-01"
+pages_build_output_dir = "dist"
+
+# The athlete's own data. Every table carries user_id and every query filters on
+# the session's user, so one account can never reach another's training.
+[[d1_databases]]
+binding = "DB"
+database_name = "jogu"
+database_id = "876524b7-eb93-42aa-aa29-7d43e4189c1c"
+
+# GOOGLE_CLIENT_ID and KEY_ENCRYPTION_SECRET are deliberately not declared here.
+# A value in this file is written on every deploy, so an empty default would wipe
+# whatever is set in Cloudflare. Both are set with `wrangler pages secret put`,
+# and `.dev.vars` supplies local ones.

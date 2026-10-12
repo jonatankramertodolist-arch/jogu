@@ -1,0 +1,83 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-base-950: #07090c;
+  --color-base-900: #0b0f14;
+  --color-base-850: #11161d;
+  --color-base-800: #161d26;
+  --color-base-700: #202a36;
+  --color-base-600: #2f3d4d;
+  --color-muted: #8a97a6;
+  --color-faint: #5d6b7a;
+
+  --color-swim: #38bdf8;
+  --color-bike: #fbbf24;
+  --color-run: #34d399;
+  --color-strength: #a78bfa;
+  --color-rest: #64748b;
+
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    /* Keeps the layout from jumping when iOS Safari shows/hides its chrome. */
+    height: 100%;
+    background-color: var(--color-base-950);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100%;
+    background-color: var(--color-base-950);
+    color: #e8edf3;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overscroll-behavior-y: none;
+  }
+
+  button {
+    font: inherit;
+    color: inherit;
+  }
+
+  input,
+  textarea,
+  select {
+    font: inherit;
+    /* 16px minimum stops iOS from zooming in when a field is focused. */
+    font-size: max(16px, 1em);
+    color: inherit;
+  }
+
+  /* The tap highlight makes the custom buttons look broken on iOS. */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@utility safe-bottom {
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 0.5rem);
+}
+
+@utility safe-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+/* Sits directly above the fixed tab bar, safe area included. */
+@utility above-tabbar {
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 58px);
+}
+
+@utility pb-tabbar {
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 130px);
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
